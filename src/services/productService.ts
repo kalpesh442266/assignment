@@ -3,12 +3,11 @@ import { setError, setProducts, setSkipLimit } from "../store/products/productsS
 import { dispatch } from "../store/store";
 import { Pagination } from "../store/products/IProducts";
 
-export const getProducts = async (params: Pagination = { skip: 0, limit: 10 }) => {
+export const getProducts = async (params: Pagination = { skip: 0, limit: 20 }) => {
     try {
         const data = await axios.get(`https://dummyjson.com/products?limit=${params.limit}&skip=${params.skip}`);
         dispatch(setProducts(data.data.products));
-        dispatch(setSkipLimit({ skip: params.skip, limit: params.limit }))
-        console.log(data);
+        dispatch(setSkipLimit({ skip: params.skip, limit: params.limit }));
         return data.data.products;
     } catch (e: any) {
         dispatch(setError(e));
