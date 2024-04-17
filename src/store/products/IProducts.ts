@@ -9,11 +9,12 @@ export type ProductData = {
 
 export type Pagination = {
     skip: number,
-    limit: number
+    limit: number,
 }
 
 export type ProductsState = {
     productData: ProductData[],
     isLoading: Boolean,
-    error: string | null
+    error: string | null,
+    total: number
 } & Pagination;

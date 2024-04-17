@@ -1,7 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import axios from 'axios';
-import store from '../store';
-import { Pagination, ProductData, ProductsState } from './IProducts';
+import { createSlice } from '@reduxjs/toolkit';
+import { getProducts } from '../../services/productService';
+import { ProductsState } from './IProducts';
 
 
 const initialState: ProductsState = {
@@ -9,29 +8,26 @@ const initialState: ProductsState = {
     skip: 0,
     limit: 10,
     error: null,
-    isLoading: false
+    isLoading: false,
+    total: 1,
 }
 
 export const productsSlice = createSlice({
     name: 'products',
     initialState: initialState,
-
-    reducers: {
-        setProducts: (state, action: PayloadAction<ProductData[]>) => {
-            state.productData = action.payload;
-        },
-
-        setError: (state, action: PayloadAction<string>) => {
-            state.error = action.payload;
-        },
-
-        setSkipLimit: (state, action) => {
-            state.skip = action.payload.skip;
-            state.limit = action.payload.limit;
-        }
-    },
+    reducers: {},
+    extraReducers(builder) {
+        builder.addCase(getProducts.pending, (state, action) => {
+            state.isLoading = true
+        }).addCase(getProducts.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.productData = [...state.productData, ...action.payload.products];
+            state.skip = action.payload.skip + 10;
+            state.total = action.payload.total;
+        })
+    }
 })
 
-export const { setProducts, setError, setSkipLimit } = productsSlice.actions
+export const { } = productsSlice.actions
 
 export default productsSlice.reducer
