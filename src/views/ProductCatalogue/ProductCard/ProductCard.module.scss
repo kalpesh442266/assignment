@@ -1,0 +1,51 @@
+@import "../../../styles/variables";
+
+.cardContainer {
+    margin: $md;
+    position: relative;
+    border-radius: $border-radius-1;
+    background-color: $light;
+}
+
+.imageContainer {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 100%;
+    border-radius: $border-radius-1;
+}
+
+.productImage {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.labelsContainer{
+    padding: 0 $sm $md $sm;
+}
+
+.price {
+    font-weight: 700;
+}
+
+@mixin chip {
+    position: absolute;
+    top: $xs;
+    right: $xs;
+    border-radius: 50px;
+    padding: $xxs;
+    color: $light
+}
+
+.fewRemaining {
+    @include chip;
+    background-color: $danger;
+}
+
+.inStock {
+    @include chip;
+    background-color: $success;
+    z-index: 999;
+}

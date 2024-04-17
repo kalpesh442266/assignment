@@ -3,7 +3,7 @@ import productsReducer from "./products/productsSlice";
 import { useDispatch } from 'react-redux';
 
 const reducer = {
-    products: productsReducer
+    products: productsReducer,
 }
 
 const store = configureStore({
@@ -14,4 +14,5 @@ const store = configureStore({
 export default store;
 
 export type AppDispatch = typeof store.dispatch
-export const useAppDispatch = useDispatch.withTypes<AppDispatch>() 
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
+export const dispatch = store.dispatch;

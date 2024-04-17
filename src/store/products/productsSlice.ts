@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { pagination, ProductData, ProductsState } from './IProducts';
-import { AppState } from '../interfaces';
+import store from '../store';
+import { Pagination, ProductData, ProductsState } from './IProducts';
 
 
 const initialState: ProductsState = {
@@ -33,18 +33,5 @@ export const productsSlice = createSlice({
 })
 
 export const { setProducts, setError, setSkipLimit } = productsSlice.actions
-
-
-export const getProducts = createAsyncThunk('products/getProducts', async (params: pagination, { dispatch }) => {
-    try {
-        const data = await axios.get("https://dummyjson.com/products");
-        dispatch(setProducts(data.data.products));
-        dispatch(setSkipLimit({ skip: params.skip, limit: params.limit }))
-        console.log(data)
-    } catch (e: any) {
-        dispatch(setError(e))
-    }
-})
-
 
 export default productsSlice.reducer

@@ -1,17 +1,27 @@
-import { useEffect } from "react"
-import { getProducts } from "../../store/products/productsSlice"
-import { useAppDispatch } from "../../store/store"
+import { useLoaderData } from "react-router-dom";
+import ProductCard from "./ProductCard/ProductCard";
+import { ProductData } from "../../store/products/IProducts";
+
+//styles
+import styles from "./ProductCatalogue.module.scss";
+import ProductFilters from "./ProductFilters/ProductFilters";
 
 type Props = {}
 
 const ProductCatalogue = (props: Props) => {
-  const dispatch = useAppDispatch();
+  const productsData = useLoaderData() as ProductData[];
 
-  useEffect(() => {
-    dispatch(getProducts({ skip: 1, limit: 20 }))
-  }, [])
+  
   return (
-    <div>ProductCatalogue123</div>
+    <>
+      <ProductFilters />
+      <div className={styles.grid}>
+        {productsData.map(product => (
+          <ProductCard key={product.id} product={product} />
+        ))
+        }
+      </div>
+    </>
   )
 }
 

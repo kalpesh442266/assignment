@@ -1,0 +1,10 @@
+@import "./mixins";
+@import "./variables";
+
+body{
+    box-sizing: border-box;
+    max-width: 1600px;
+    margin: auto;
+    background-color: $background;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
