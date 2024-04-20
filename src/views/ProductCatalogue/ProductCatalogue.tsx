@@ -2,18 +2,21 @@ import ProductCard from "./ProductCard/ProductCard";
 import ProductFilters from "./ProductFilters/ProductFilters";
 
 //styles
+import { useOutletContext } from "react-router-dom";
 import InfiniteScroller from "../../hooks/InfiniteScroll";
 import { getProducts } from "../../services/productService";
 import { dispatch, useAppSelector } from "../../store/store";
 import styles from "./ProductCatalogue.module.scss";
 
-type Props = {}
 
-const ProductCatalogue = (props: Props) => {
+const ProductCatalogue = () => {
+  const data = useOutletContext();
+  console.log(data);
+
   const { productData, isLoading, skip, total } = useAppSelector(state => state.products);
 
   const getMoreData = async () => {
-    dispatch(getProducts({ skip: skip, limit: 10 }))
+    dispatch(getProducts({ skip: skip + 10, limit: 10 }))
   }
 
   return (

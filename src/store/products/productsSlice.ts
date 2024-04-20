@@ -9,25 +9,30 @@ const initialState: ProductsState = {
     limit: 10,
     error: null,
     isLoading: false,
-    total: 1,
+    total: 2,
 }
 
 export const productsSlice = createSlice({
     name: 'products',
     initialState: initialState,
-    reducers: {},
+    reducers: {
+        setData(state, action) {
+            state.productData = action.payload.data.products;
+            state.total = action.payload.data.total;
+        }
+    },
     extraReducers(builder) {
         builder.addCase(getProducts.pending, (state, action) => {
             state.isLoading = true
         }).addCase(getProducts.fulfilled, (state, action) => {
             state.isLoading = false;
             state.productData = [...state.productData, ...action.payload.products];
-            state.skip = action.payload.skip + 10;
+            state.skip = action.payload.skip > action.payload.total ? action.payload.total : action.payload.skip;
             state.total = action.payload.total;
         })
     }
 })
 
-export const { } = productsSlice.actions
+export const { setData } = productsSlice.actions
 
 export default productsSlice.reducer

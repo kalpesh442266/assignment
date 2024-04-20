@@ -1,0 +1,14 @@
+@import "../../../styles/variables";
+
+.row {
+    display: flex;
+}
+
+@each $gap in $spacings {
+    .col-gap-#{$gap} {
+        column-gap: $gap * 1px;
+    }
+    .row-gap-#{$gap} {
+        row-gap: $gap * 1px;
+    }
+}

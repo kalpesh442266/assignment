@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import Loader from '../views/Loader/Loader';
 
 
 
@@ -17,6 +18,7 @@ const options = {
 function InfiniteScroller({ callback, isLoading, children, hideSentinal }: Props) {
   const observer = useRef<IntersectionObserver>();
   const ref = useRef(null);
+
   useEffect(() => {
     observer.current = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -39,10 +41,10 @@ function InfiniteScroller({ callback, isLoading, children, hideSentinal }: Props
   }, [callback, isLoading]);
 
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       {children}
-      {hideSentinal && < div ref={ref} id="sentinel" style={{ height: "10px" }}> </div>}
-      {isLoading && <div>loading...</div>}
+      {isLoading && <Loader coverPage={false}/>}
+      {hideSentinal && < div ref={ref} id="sentinel" style={{ height: "20px" }}> </div>}
     </div>
   )
 

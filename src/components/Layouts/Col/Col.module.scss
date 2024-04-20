@@ -1,0 +1,7 @@
+@use "sass:math";
+
+@for $i from 1 through 24 {
+    .col-#{$i} {
+        flex: 0 0 calc((100 / 24) * $i) * 1%;
+    }
+}

@@ -4,7 +4,10 @@ export type ProductData = {
     id: number,
     images: string[],
     price: number,
-    stock: number
+    stock: number,
+    discountPercentage: number,
+    rating: number;
+    description: string;
 }
 
 export type Pagination = {

@@ -1,29 +1,27 @@
 import { Provider } from "react-redux";
-import { RouterProvider } from "react-router-dom";
-import { router } from "./routes/routes";
 import store from "./store/store";
+import RouterProvider from "./routes/routes";
 
 function App() {
   /**
-    add card component 
-    add product grid component
-    add cart list component
-    add infinite scrolling
+    make hoc for navbar
+    add cart list component - cart button
     add filters - by price, sorting 
-    add product details page
-    fix theme colors 
-    fix padding
-    fix margins
+    create cart component
+    create a profile page
+    create filters
+    create sorting
 
-    add loader
-    add skeleton
+    add animations
+    add loader - added (check it)
     add error page for react router
     add dynamic skeleton with shimmering effect
     add storybook
   **/
+ 
   return (
     <Provider store={store}>
-      <RouterProvider router={router} fallbackElement={<>loading`</>} />
+      <RouterProvider />
     </Provider>
   )
 }
