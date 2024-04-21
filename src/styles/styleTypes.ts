@@ -6,4 +6,4 @@ export type RowGap = 5 | 10 | 15 | 25 | 40 | 45 | 50;
 
 export type Directions = "row" | "col";
 export type Justify = "center" | "left" | "space-between";
-export type Align = "center";
+export type Align = "center" | "top";

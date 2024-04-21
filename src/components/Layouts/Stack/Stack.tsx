@@ -5,7 +5,9 @@ import { Align, Directions, Justify } from "../../../styles/styleTypes";
 import { BoxModalHocProps } from "../../../Hoc/BoxModalHoc/IBoxModalHoc";
 import BoxModalHoc from "../../../Hoc/BoxModalHoc/BoxModalHoc";
 
-type StackProps = {
+type DivProps = JSX.IntrinsicElements["div"];
+
+interface StackProps extends DivProps {
     boxModalClasses?: Array<BoxModalHocProps>;
     direction: Directions;
     spacing?: number;
@@ -16,7 +18,7 @@ type StackProps = {
 }
 
 const H = (props: StackProps) => {
-    const { boxModalClasses = [], spacing, direction, children, justify, align, className } = props;
+    const { boxModalClasses = [], spacing, direction, children, justify, align, className, ...other } = props;
     const classNames = [
         ...boxModalClasses,
         style.stack,
@@ -29,7 +31,7 @@ const H = (props: StackProps) => {
     const stackStyles = classNames.join(" ");
 
     return (
-        <div className={stackStyles}>{children}</div>
+        <div className={stackStyles} {...other}>{children}</div>
     )
 }
 

@@ -2,16 +2,14 @@ import ProductCard from "./ProductCard/ProductCard";
 import ProductFilters from "./ProductFilters/ProductFilters";
 
 //styles
-import { useOutletContext } from "react-router-dom";
+import Col from "../../components/Layouts/Col/Col";
+import Row from "../../components/Layouts/Row/Row";
 import InfiniteScroller from "../../hooks/InfiniteScroll";
 import { getProducts } from "../../services/productService";
 import { dispatch, useAppSelector } from "../../store/store";
 import styles from "./ProductCatalogue.module.scss";
 
-
 const ProductCatalogue = () => {
-  const data = useOutletContext();
-  console.log(data);
 
   const { productData, isLoading, skip, total } = useAppSelector(state => state.products);
 
@@ -20,16 +18,21 @@ const ProductCatalogue = () => {
   }
 
   return (
-    <>
-      <ProductFilters />
-      <InfiniteScroller callback={getMoreData} isLoading={isLoading} hideSentinal={total - 1 >= productData.length} >
-        <div className={styles.grid}>
-          {productData.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </InfiniteScroller>
-    </>
+    <Row m={10} colGap={15}>
+      <Col col={6}>
+        <ProductFilters />
+      </Col>
+      <Col col={17}>
+
+        <InfiniteScroller callback={getMoreData} isLoading={isLoading} hideSentinal={total - 1 >= productData.length} >
+          <div className={styles.grid}>
+            {productData.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </InfiniteScroller>
+      </Col>
+    </Row>
   )
 }
 

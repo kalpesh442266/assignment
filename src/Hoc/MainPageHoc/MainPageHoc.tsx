@@ -1,9 +1,9 @@
-import { Outlet } from "react-router-dom"
-import Navigation from "../../components/Navigation/Navigation"
+import { Outlet } from "react-router-dom";
+import Navigation from "../../components/Navigation/Navigation";
 
-type Props = {}
 
-const MainPageHoc = (props: Props) => {
+const MainPageHoc = () => {
+
     return (
         <>
             <Navigation />

@@ -43,8 +43,8 @@ function InfiniteScroller({ callback, isLoading, children, hideSentinal }: Props
   return (
     <div style={{ width: "100%" }}>
       {children}
-      {isLoading && <Loader coverPage={false}/>}
-      {hideSentinal && < div ref={ref} id="sentinel" style={{ height: "20px" }}> </div>}
+      {isLoading && <Loader size='medium' coverPage={false}/>}
+      {hideSentinal && < div ref={ref} id="sentinel" style={{ height: "40px" }}> </div>}
     </div>
   )
 

@@ -1,6 +1,8 @@
 import { Provider } from "react-redux";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes/routes";
 import store from "./store/store";
-import RouterProvider from "./routes/routes";
+import Loader from "./views/Loader/Loader";
 
 function App() {
   /**
@@ -18,10 +20,11 @@ function App() {
     add dynamic skeleton with shimmering effect
     add storybook
   **/
- 
+
+
   return (
     <Provider store={store}>
-      <RouterProvider />
+      <RouterProvider router={router} fallbackElement={<Loader coverPage />} />
     </Provider>
   )
 }

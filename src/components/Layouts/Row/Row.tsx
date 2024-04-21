@@ -10,11 +10,12 @@ type RowProps = {
     className?: string;
     children: ReactNode;
     colGap?: ColGap;
-    rowGap?: RowGap
+    rowGap?: RowGap;
+    noWrap?: Boolean
 }
 
 const H = (props: RowProps) => {
-    const { boxModalClasses = [], className, children, colGap, rowGap } = props;
+    const { boxModalClasses = [], className, children, colGap, rowGap, noWrap } = props;
 
     const classNames = [
         ...boxModalClasses,
@@ -22,6 +23,7 @@ const H = (props: RowProps) => {
         style.row,
         style[`col-gap-${colGap}`],
         style[`row-gap-${rowGap}`],
+        noWrap && style.noWrap
     ]
 
     const rowStyles = classNames.join(" ");

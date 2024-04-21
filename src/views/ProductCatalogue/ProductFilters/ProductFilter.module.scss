@@ -1,29 +1,5 @@
 @import "../../../styles/variables";
 
-.container {
-    height: $navbar-height-lg;
-    // background-color: $light;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px $md;
-    border-radius: 0 0 $border-radius-1 $border-radius-1;
-    position: sticky;
-    max-width: $max-width;
-    top: 0;
-    right: 0;
-    z-index: 99999;
-}
-
-.buttonsContainer {
-    display: flex;
-    column-gap: $md;
-}
-
-.iconText {
-    vertical-align: super;
-    padding-left: $xs;
-}
 
 .iconTextWrapper {
     cursor: pointer

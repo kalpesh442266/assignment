@@ -8,16 +8,24 @@ export type ProductData = {
     discountPercentage: number,
     rating: number;
     description: string;
+    thumbnail: string
 }
 
 export type Pagination = {
-    skip: number,
-    limit: number,
+    skip?: number,
+    limit?: number,
+}
+export type ProductFilters = {
+    category?: string,
+    sortByPrice?: "ASC" | "DSC",
+    searchBy?: string,
+    sortByPopularity: "ASC" | "DSC",
 }
 
 export type ProductsState = {
     productData: ProductData[],
     isLoading: Boolean,
     error: string | null,
-    total: number
+    total: number,
+    filters: ProductFilters
 } & Pagination;

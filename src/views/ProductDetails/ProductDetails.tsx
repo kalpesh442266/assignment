@@ -7,29 +7,31 @@ import { useLoaderData } from "react-router-dom";
 import Rating from "../../Icons/Rating";
 import Truck from "../../Icons/Truck";
 import WritingPad from "../../Icons/WritingPad";
+import Box from "../../components/Box/Box";
+import Button from "../../components/Button/Button";
 import Card from "../../components/Card/Card";
 import Col from "../../components/Layouts/Col/Col";
 import Row from "../../components/Layouts/Row/Row";
 import Stack from "../../components/Layouts/Stack/Stack";
-import Navigation from "../../components/Navigation/Navigation";
 import Typography from "../../components/Typography/Typography";
 import { calulateDiscountedPrice } from "../../utils/producUtils";
-import Button from "../../components/Button/Button";
-import Box from "../../components/Box/Box";
+import { setCartProduct } from "../../store/cart/cartSlice";
+import { useDispatch } from "react-redux";
 
 type Props = {}
 
 const ProductDetails = (props: Props) => {
   const product = useLoaderData() as ProductData;
+  const dispatch = useDispatch();
 
   const [currImg, setCurrImg] = useState(product.images[0]);
   const discountedPrice = calulateDiscountedPrice(product.price, product.discountPercentage);
 
   return (
-    <Row colGap={45} m={18}>
-      <Col col={12} className={styles.imageContainerWrapper}>
-        <Row colGap={15}>
-          <Col col={4}>
+    <Row m={18}>
+      <Col pr={15} col={12}>
+        <Row noWrap>
+          <Col pr={15} col={4}>
             <Stack direction="col">
               {
                 product.images.map((image, i) => {
@@ -44,7 +46,7 @@ const ProductDetails = (props: Props) => {
               }
             </Stack>
           </Col>
-          <Col col={20} className={styles.imgWrapper}>
+          <Col col={19} className={styles.imgWrapper}>
             <img className={styles.mainImg} src={currImg} />
           </Col>
         </Row>
@@ -88,8 +90,8 @@ const ProductDetails = (props: Props) => {
           </Stack>
         </Card>
         <Stack direction="row" spacing={10} mt={30}>
-          <Button type="primary" fullWidth>Add to cart</Button>
-          <Button type="primary" variant="outline" fullWidth>Buy Now</Button>
+          <Button onClick={() => dispatch(setCartProduct({product}))} btntype="primary" fullWidth pt={12} pb={12}>Add to cart</Button>
+          <Button btntype="primary" variant="outline" fullWidth>Buy Now</Button>
         </Stack>
       </Col>
     </Row>

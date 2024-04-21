@@ -2,31 +2,27 @@
 
 // responsive
 @mixin breakpoint($point) {
-    @if $point ==small {
-        @media (max-width:600px) {
+    @if $point ==sm {
+        @media only screen and (max-width:600px) {
             @content
         }
     }
 
-    @if $point ==medium {
-        @media (max-width:900px) {
+    @if $point ==md {
+        @media only screen and (max-width:900px) {
             @content
         }
     }
 
-    @if $point ==large {
-        @media (max-width:1200px) {
+    @if $point ==lg {
+        @media only screen and (max-width:1200px) {
             @content
         }
     }
-}
 
-@each $gap in $spacings {
-    .col-gap-#{$gap} {
-        column-gap: $gap * 1px;
-    }
-
-    .row-gap-#{$gap} {
-        row-gap: $gap * 1px;
+    @if $point ==xl{
+        @media only screen and (min-width:1200px) {
+            @content
+        }
     }
 }

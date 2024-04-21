@@ -4,8 +4,6 @@
     border: none;
     outline: none;
     border-radius: $border-radius-1;
-    padding: $sm;
-    margin: $sm 0 $sm 0;
     cursor: pointer;
 }
 
@@ -25,9 +23,19 @@
         color: $light;
         outline: none;
 
-        &:hover {   
+        &:hover {
             background-color: $primary-100;
             color: $light;
+        }
+    }
+
+    &-text {
+        background-color: transparent;
+        color: $primary-50;
+        outline: none;
+
+        &:hover {
+            background-color: $primary-10;
         }
     }
 

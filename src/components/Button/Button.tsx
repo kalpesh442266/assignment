@@ -3,28 +3,33 @@ import BoxModalHoc from "../../Hoc/BoxModalHoc/BoxModalHoc";
 import { BoxModalHocProps } from "../../Hoc/BoxModalHoc/IBoxModalHoc";
 import style from "./Button.module.scss";
 
-type Props = {
+type ButtonDefaultProps = JSX.IntrinsicElements['button'];
+
+interface ButtonProps extends ButtonDefaultProps {
     fullWidth?: Boolean;
     children?: ReactNode;
-    type?: "primary" | "secondary" | "danger";
-    styles?: object;
+    btntype?: "primary" | "secondary" | "danger";
     boxModalClasses?: BoxModalHocProps[],
-    variant?: "outline" | "content";
+    variant?: "outline" | "content" | "text";
+    className?: string;
 }
 
-const H = (props: Props) => {
-    const { fullWidth, children, type = "primary", styles, boxModalClasses = [], variant = "content", ...other } = props;
+const H = (props: ButtonProps) => {
+    const { fullWidth, children, btntype = "primary",
+        boxModalClasses = [], variant = "content", className, ...other
+    } = props;
     const classNames = [
         ...boxModalClasses,
+        className,
         style.button,
-        style[type],
-        style[`${type}-${variant}`],
+        style[btntype],
+        style[`${btntype}-${variant}`],
         fullWidth && style.fullWidth
     ]
     const btnStyles = classNames.join(" ");
-    console.log(btnStyles, `${type}-${variant}`)
+
     return (
-        <button style={styles} className={btnStyles} {...other}>
+        <button className={btnStyles} {...other}>
             {children}
         </button>
     )
