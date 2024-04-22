@@ -12,6 +12,7 @@ import Typography from "../../components/Typography/Typography";
 import { decQuantity, deleteProduct, incQuantity } from "../../store/cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { calulateDiscountedPrice } from "../../utils/producUtils";
+import { CartProducts } from "../../store/cart/ICart";
 
 
 const ProductCart = () => {
@@ -20,7 +21,7 @@ const ProductCart = () => {
     const dispatch = useAppDispatch();
 
     if (!cart.totalQuantity) {
-        return (    
+        return (
             <Box className={style.emptyCart}>
                 <Typography fontSize="large">No items...!</Typography>
             </Box>
@@ -32,7 +33,7 @@ const ProductCart = () => {
             <Typography As={"h1"} fontSize="x-large">My Cart</Typography>
             <Row colGap={10}>
                 <Col col={17}>
-                    {cart.cartProducts.map(product => (
+                    {cart.cartProducts.map((product: CartProducts) => (
                         <Card key={product.id} backgroundColor="light" borderRadius p={10} mt={20}>
                             <Stack direction="row" spacing={10}>
                                 <Box className={style.imageContainer}>

@@ -1,33 +1,36 @@
 @import "./mixins";
 @import "./variables";
 
-body{
-    box-sizing: border-box;
-    max-width: $max-width;
-    margin: auto;
-    background-color: $background;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  max-width: $max-width;
+  margin: auto;
+  background-color: $background;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 //scrollbar styling
 
 ::-webkit-scrollbar {
-    width: 2px;
-    padding-left: 25px;
-    border-radius: $border-radius-1;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888; 
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-  }
+  width: 2px;
+  padding-left: 25px;
+  border-radius: $border-radius-1;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

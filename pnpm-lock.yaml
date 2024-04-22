@@ -29,6 +29,9 @@ dependencies:
   react-select:
     specifier: ^5.8.0
     version: 5.8.0(@types/react@18.2.79)(react-dom@18.2.0)(react@18.2.0)
+  reduxjs-toolkit-persist:
+    specifier: ^7.2.1
+    version: 7.2.1(@reduxjs/toolkit@2.2.3)
 
 devDependencies:
   '@types/react':
@@ -2195,6 +2198,14 @@ packages:
 
   /redux@5.0.1:
     resolution: {integrity: sha512-M9/ELqF6fy8FwmkpnF0S3YKOqMyoWJ4+CS5Efg2ct3oY9daQvd/Pc71FpGZsVsbl3Cpb+IIcjBDUnnyBdQbq4w==}
+    dev: false
+
+  /reduxjs-toolkit-persist@7.2.1(@reduxjs/toolkit@2.2.3):
+    resolution: {integrity: sha512-1gu9Qid0qXlsM4a2D8eHx/YOwa7I0lgAXqM0KYQoX2RA+KMezkq5wkJKEMLoUkpqVuWYHRdU7auS2/jFVsR0gQ==}
+    peerDependencies:
+      '@reduxjs/toolkit': ^1.6.1
+    dependencies:
+      '@reduxjs/toolkit': 2.2.3(react-redux@9.1.1)(react@18.2.0)
     dev: false
 
   /regenerator-runtime@0.14.1:

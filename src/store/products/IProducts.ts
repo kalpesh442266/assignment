@@ -19,7 +19,11 @@ export type ProductFilters = {
     category?: string,
     sortByPrice?: "ASC" | "DSC",
     searchBy?: string,
-    sortByPopularity: "ASC" | "DSC",
+    sortByPopularity?: "ASC" | "DSC",
+}
+
+export type ProductSearch = {
+
 }
 
 export type ProductsState = {
@@ -27,5 +31,5 @@ export type ProductsState = {
     isLoading: Boolean,
     error: string | null,
     total: number,
-    filters: ProductFilters
+    filters: ProductFilters;
 } & Pagination;

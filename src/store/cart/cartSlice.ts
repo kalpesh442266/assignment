@@ -26,9 +26,9 @@ const initialState: CartState = {
     totalQuantity: 0
 }
 
-const storeCartData = (cartProducts: CartProducts[]) => {
-    localStorage.setItem("cartData", JSON.stringify(cartProducts))
-}
+// const storeCartData = (cartProducts: CartProducts[]) => {
+//     localStorage.setItem("cartData", JSON.stringify(cartProducts))
+// }
 
 
 export const cartSlice = createSlice({
@@ -60,7 +60,6 @@ export const cartSlice = createSlice({
                 state.cartProducts.push(newProduct)
             }
 
-            storeCartData(state.cartProducts)
         },
         incQuantity(state, action) {
             state.cartProducts = state.cartProducts.map(product => {
@@ -70,7 +69,6 @@ export const cartSlice = createSlice({
                 return product;
             })
             state.totalQuantity += 1;
-            storeCartData(state.cartProducts)
         },
         decQuantity(state, action) {
             state.cartProducts = state.cartProducts.map(product => {
@@ -80,7 +78,6 @@ export const cartSlice = createSlice({
                 return product;
             })
             state.totalQuantity -= 1;
-            storeCartData(state.cartProducts)
 
         },
         deleteProduct(state, action) {
@@ -96,7 +93,6 @@ export const cartSlice = createSlice({
 
             state.cartProducts = state.cartProducts.filter(product => product.id !== action.payload.id);
             state.totalQuantity -= product.quantity;
-            storeCartData(state.cartProducts)
         }
 
     }

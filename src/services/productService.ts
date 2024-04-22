@@ -1,15 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Pagination } from "../store/products/IProducts";
+import { Pagination, ProductFilters } from "../store/products/IProducts";
 import { AppState } from "../store/interfaces";
 
-export const getProductsData = async ({ skip = 0, limit = 20, category }: Pagination & { category?: string }) => {
+export const getProductsData = async ({ skip = 0, limit = 20, ...filter }: Pagination & ProductFilters) => {
     let baseString = "https://dummyjson.com/products/";
-
-    baseString = category ? baseString + `category/${category}` : baseString;
-
+    baseString = filter.category ? baseString + `category/${filter.category}` : baseString;
+    baseString = filter.searchBy ? baseString + `search?q=${filter.searchBy}` : baseString;
+    baseString = !filter.searchBy ? baseString + `?` : baseString;
+    
+    // console.log(filter.searchBy)
     try {
-        const data = await axios.get(`${baseString}?limit=${limit}&skip=${skip}`);
+        const data = await axios.get(`${baseString}&limit=${limit}&skip=${skip}`);
         return data.data;
     } catch (e: any) {
         throw {
